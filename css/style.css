@@ -228,6 +228,67 @@ body.light .theme-btn { background: #ffffff; border-color: #e2e8f0; color: #3341
 .theme-btn:hover { color: #fff; border-color: #334155; }
 body.light .theme-btn:hover { color: #0f172a; border-color: #cbd5e1; }
 
+/* =========================================================
+   COMPACT SEARCH FIELD (under server pill)
+   ========================================================= */
+.search-wrap { position: relative; }
+
+.search-input {
+  background: #131b26;
+  border: 1px solid rgba(30,41,59,.8);
+  color: #e2e8f0;
+  transition: background .2s ease, border-color .2s ease, box-shadow .2s ease, color .2s ease;
+}
+.search-input::placeholder { color: #64748b; }
+.search-input:hover { border-color: #334155; }
+.search-input:focus {
+  border-color: rgba(52,211,153,.6);
+}
+
+/* Light mode */
+body.light .search-input {
+  background: #ffffff;
+  border-color: #e2e8f0;
+  color: #0f172a;
+}
+body.light .search-input:hover { border-color: #cbd5e1; }
+body.light .search-input:focus { border-color: rgba(16,185,129,.6); }
+body.light .search-icon { color: #94a3b8; }
+body.light .search-clear { color: #94a3b8; }
+body.light .search-clear:hover {
+  color: #334155;
+  background: #f1f5f9;
+}
+
+/* =========================================================
+   EMPTY STATE
+   ========================================================= */
+.empty-state {
+  text-align: center;
+  padding: 40px 20px;
+  border: 1px dashed rgba(30,41,59,.8);
+  border-radius: 14px;
+  background: #131b26;
+  color: #94a3b8;
+}
+body.light .empty-state {
+  background: #ffffff;
+  border-color: #e2e8f0;
+  color: #64748b;
+}
+.empty-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #cbd5e1;
+  margin-bottom: 4px;
+}
+body.light .empty-title { color: #334155; }
+.empty-hint {
+  font-size: 12px;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  color: #64748b;
+}
+
 /* ---------- Entrance animation ---------- */
 @keyframes cardIn {
   from { opacity: 0; transform: translateY(6px); }

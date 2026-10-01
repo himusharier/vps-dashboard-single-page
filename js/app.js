@@ -1,102 +1,36 @@
 /* =========================================================
    Projects & Services — app.js
-   Add unlimited buttons per service via the `buttons` array.
+   Services + live search + theme
    ========================================================= */
 
 const SERVICES = [
   {
     id: 'portainer',
-    name: 'Portainer Container Ops',
+    name: 'Portainer Dashboard',
     status: 'online',
     meta: 'A lightweight web UI for managing Docker containers, images, networks and volumes—simplifying container operations and monitoring.',
     buttons: [
-      { label: 'Launch Console', href: 'https://portainer.example.com', variant: 'primary', icon: 'external' },
-      { label: 'Containers',     href: 'https://portainer.example.com/#!/containers', variant: 'ghost' },
-      { label: 'Stacks',         href: 'https://portainer.example.com/#!/stacks', variant: 'ghost' },
-      { label: 'Images',         href: 'https://portainer.example.com/#!/images', variant: 'ghost' },
-      { label: 'Networks',       href: 'https://portainer.example.com/#!/networks', variant: 'ghost' },
-      { label: 'Volumes',        href: 'https://portainer.example.com/#!/volumes', variant: 'ghost' }
-    ]
-  },
-  {
-    id: 'gitea',
-    name: 'Gitea Code Repository',
-    status: 'online',
-    meta: 'git · 38 repos',
-    buttons: [
-      { label: 'View Repos',    href: 'https://git.example.com', variant: 'primary', icon: 'external' },
-      { label: 'Pull Requests', href: 'https://git.example.com/pulls', variant: 'ghost' },
-      { label: 'Issues',        href: 'https://git.example.com/issues', variant: 'ghost' },
-      { label: 'Actions',       href: 'https://git.example.com/actions', variant: 'ghost' }
+      { label: 'Login to Dashboard', href: 'https://192.168.0.109:9443', variant: 'ghost', icon: 'external' },
     ]
   },
   {
     id: 'pgadmin',
-    name: 'pgAdmin Database Console',
+    name: 'pgAdmin Dashboard',
     status: 'online',
-    meta: 'postgres · 3 clusters',
+    meta: 'A secure web-based PostgreSQL administration console used to manage databases, inspect schemas, and monitor server activity with ease.',
     buttons: [
-      { label: 'Open Studio', href: 'https://pgadmin.example.com', variant: 'primary', icon: 'external' },
-      { label: 'Query Tool',  href: 'https://pgadmin.example.com/browser', variant: 'ghost' }
+      { label: 'Login to Dashboard', href: 'http://himusharier.pro.bd:5050', variant: 'ghost', icon: 'external' },
     ]
   },
   {
     id: 'phpmyadmin',
-    name: 'phpMyAdmin MySQL',
+    name: 'phpMyAdmin Dashboard',
     status: 'online',
-    meta: 'mysql · 5 schemas',
+    meta: 'A secure web-based MySQL and MariaDB administration tool used to manage databases, tables, users, SQL queries, and server settings through an intuitive interface.',
     buttons: [
-      { label: 'SQL Console', href: 'https://pma.example.com', variant: 'primary', icon: 'external' },
-      { label: 'Export DB',   href: 'https://pma.example.com/export.php', variant: 'ghost' },
-      { label: 'Import DB',   href: 'https://pma.example.com/import.php', variant: 'ghost' },
-      { label: 'Users',       href: 'https://pma.example.com/user_password.php', variant: 'ghost' }
+      { label: 'Login to Dashboard', href: 'http://himusharier.pro.bd:7098', variant: 'ghost', icon: 'external' },
     ]
   },
-  {
-    id: 'codesquad',
-    name: 'CodeSquad Main Dashboard',
-    status: 'online',
-    meta: 'web · v2.4.1',
-    buttons: [
-      { label: 'Visit App', href: 'https://app.codesquad.example.com', variant: 'primary', icon: 'external' },
-      { label: 'Analytics', href: 'https://app.codesquad.example.com/analytics', variant: 'ghost' },
-      { label: 'Settings',  href: 'https://app.codesquad.example.com/settings', variant: 'ghost' }
-    ]
-  },
-  {
-    id: 'quizfusion',
-    name: 'QuizFusion Interactive',
-    status: 'online',
-    meta: 'web · live quiz engine',
-    buttons: [
-      { label: 'Play Demo',   href: 'https://quizfusion.example.com/demo', variant: 'primary', icon: 'play' },
-      { label: 'Leaderboard', href: 'https://quizfusion.example.com/leaderboard', variant: 'ghost' },
-      { label: 'Create Quiz', href: 'https://quizfusion.example.com/new', variant: 'success' }
-    ]
-  },
-  {
-    id: 'wewics',
-    name: 'Wewics SDMS Core',
-    status: 'warn',
-    meta: 'api · latency 240ms',
-    buttons: [
-      { label: 'API Docs',   href: 'https://api.wewics.example.com/docs', variant: 'primary', icon: 'external' },
-      { label: 'Swagger UI', href: 'https://api.wewics.example.com/swagger', variant: 'ghost' },
-      { label: 'Health',     href: 'https://api.wewics.example.com/health', variant: 'warn' }
-    ]
-  },
-  {
-    id: 'abeco',
-    name: 'ABECO Education Portal',
-    status: 'online',
-    meta: 'web · 1,240 students',
-    buttons: [
-      { label: 'Student Portal', href: 'https://portal.abeco.example.com', variant: 'primary', icon: 'external' },
-      { label: 'Admin View',     href: 'https://portal.abeco.example.com/admin', variant: 'ghost' },
-      { label: 'Reports',        href: 'https://portal.abeco.example.com/reports', variant: 'ghost' },
-      { label: 'Reset Cache',    href: 'https://portal.abeco.example.com/cache/clear', variant: 'danger' }
-    ]
-  }
 ];
 
 /* ---------------- Icons ---------------- */
@@ -112,7 +46,13 @@ const ICONS = {
 const ALLOWED_VARIANTS = ['primary', 'ghost', 'success', 'warn', 'danger'];
 
 /* ---------------- DOM ---------------- */
-const listEl = document.getElementById('services-list');
+const listEl       = document.getElementById('services-list');
+const searchInput  = document.getElementById('searchInput');
+const searchClear  = document.getElementById('searchClear');
+const emptyStateEl = document.getElementById('emptyState');
+
+/* ---------------- State ---------------- */
+const state = { query: '' };
 
 /* ---------------- Helpers ---------------- */
 function statusClass(status) {
@@ -121,27 +61,45 @@ function statusClass(status) {
   return '';
 }
 
+function escapeHtml(s) {
+  return String(s ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function matchesQuery(svc, rawQuery) {
+  const q = rawQuery.trim().toLowerCase();
+  if (!q) return true;
+  const haystack = [svc.name, svc.meta, svc.id]
+    .filter(Boolean).join(' ').toLowerCase();
+  return q.split(/\s+/).every((term) => haystack.includes(term));
+}
+
+/* ---------------- Render ---------------- */
 function renderButton(btn) {
   const variant = ALLOWED_VARIANTS.includes(btn.variant) ? btn.variant : 'ghost';
   const icon = btn.icon ? (ICONS[btn.icon] || '') : '';
   return `
     <a class="btn btn-${variant}"
-       href="${btn.href}"
+       href="${escapeHtml(btn.href)}"
        target="_blank"
        rel="noopener noreferrer">
-      <span>${btn.label}</span>${icon}
+      <span>${escapeHtml(btn.label)}</span>${icon}
     </a>`;
 }
 
 function renderCard(svc) {
   const buttons = (svc.buttons || []).map(renderButton).join('');
   return `
-    <div class="card" data-id="${svc.id}">
+    <div class="card" data-id="${escapeHtml(svc.id)}">
       <div class="card-header">
         <span class="dot ${statusClass(svc.status)}"></span>
         <div class="min-w-0 flex-1">
-          <div class="card-title">${svc.name}</div>
-          <div class="card-meta">${svc.meta}</div>
+          <div class="card-title">${escapeHtml(svc.name)}</div>
+          <div class="card-meta">${escapeHtml(svc.meta)}</div>
         </div>
       </div>
       <div class="card-actions">${buttons}</div>
@@ -149,8 +107,42 @@ function renderCard(svc) {
 }
 
 function render() {
-  listEl.innerHTML = SERVICES.map(renderCard).join('');
+  const filtered = SERVICES.filter((svc) => matchesQuery(svc, state.query));
+  listEl.innerHTML = filtered.map(renderCard).join('');
+
+  const isEmpty = filtered.length === 0;
+  emptyStateEl.classList.toggle('hidden', !isEmpty);
+  listEl.classList.toggle('hidden', isEmpty);
 }
+
+/* ---------------- Search wiring ---------------- */
+function updateClearButton() {
+  searchClear.classList.toggle('hidden', state.query.length === 0);
+}
+
+searchInput.addEventListener('input', (e) => {
+  state.query = e.target.value;
+  updateClearButton();
+  render();
+});
+
+searchClear.addEventListener('click', () => {
+  state.query = '';
+  searchInput.value = '';
+  updateClearButton();
+  render();
+  searchInput.focus();
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === '/' && document.activeElement !== searchInput) {
+    e.preventDefault();
+    searchInput.focus();
+  }
+  if (e.key === 'Escape' && document.activeElement === searchInput) {
+    searchClear.click();
+  }
+});
 
 /* ---------------- Theme ---------------- */
 const themeToggleBtn = document.getElementById('themeToggleBtn');
