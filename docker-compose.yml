@@ -1,8 +1,8 @@
 services:
   dashboard:
     build: .
-    image: projects-dashboard:latest
-    container_name: projects-dashboard
+    image: vps-dashboard:latest
+    container_name: vps-dashboard
     restart: always
 
     # Bind to 127.0.0.1 by default — put a reverse proxy in front for public access.
@@ -15,4 +15,4 @@ services:
 
 networks:
   default:
-    name: projects-dashboard-net
+    name: vps-dashboard-net
