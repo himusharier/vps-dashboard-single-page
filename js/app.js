@@ -19,7 +19,7 @@ const SERVICES = [
     status: 'online',
     meta: 'A secure web-based PostgreSQL administration console used to manage databases, inspect schemas, and monitor server activity with ease.',
     buttons: [
-      { label: 'Login to Dashboard', href: 'http://himusharier.pro.bd:5050', variant: 'ghost', icon: 'external' },
+      { label: 'Login to Dashboard', href: 'http://192.168.0.109:5050', variant: 'ghost', icon: 'external' },
     ]
   },
   {
@@ -28,7 +28,16 @@ const SERVICES = [
     status: 'online',
     meta: 'A secure web-based MySQL and MariaDB administration tool used to manage databases, tables, users, SQL queries, and server settings through an intuitive interface.',
     buttons: [
-      { label: 'Login to Dashboard', href: 'http://himusharier.pro.bd:7098', variant: 'ghost', icon: 'external' },
+      { label: 'Login to Dashboard', href: 'http://192.168.0.109:7098', variant: 'ghost', icon: 'external' },
+    ]
+  },
+  {
+    id: 'gitea',
+    name: 'Gitea Dashboard',
+    status: 'online',
+    meta: 'A secure web-based Git service that allows you to host and manage your own Git repositories.',
+    buttons: [
+      { label: 'Go to Dashboard', href: 'http://192.168.0.109:3050', variant: 'ghost', icon: 'external' },
     ]
   },
 ];
