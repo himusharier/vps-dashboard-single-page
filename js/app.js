@@ -40,6 +40,15 @@ const SERVICES = [
       { label: 'Go to Dashboard', href: 'http://192.168.0.109:3050', variant: 'ghost', icon: 'external' },
     ]
   },
+  {
+    id: 'video-downloader',
+    name: 'Video Downloader App',
+    status: 'online',
+    meta: 'A secure web-based video downloader that allows you to download videos from various sources.',
+    buttons: [
+      { label: 'Visit Site', href: 'http://192.168.0.109:7001', variant: 'ghost', icon: 'external' },
+    ]
+  },
 ];
 
 /* ---------------- Icons ---------------- */
